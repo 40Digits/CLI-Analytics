@@ -1,4 +1,6 @@
-#0.3.0 - Moved request into dependencies
+#0.3.2 - Added in required hostname parameter
+
+#0.3.1 - Moved request into dependencies
 
 #0.3.0 - Integrating babel so on systems not able to handle es2015 will be able to import without errors
 

@@ -62,7 +62,7 @@ class UA {
       el: label,
     };
     const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-    postRequestDataToGA(trackRequest, this.debug).then((res)=> resolve(res)).catch(err => reject(err));
+    postRequestDataToGA(trackRequest, this.debug).then((res) => resolve(res)).catch(err => reject(err));
   }
 
   timing(category, variable, time, label, meta = {}) {
