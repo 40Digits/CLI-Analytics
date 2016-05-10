@@ -1,3 +1,5 @@
+#0.5.4 - Adjusting how cid works and pulls in
+
 #0.5.3 - Fixing issue where options were not defined for the index
 
 #0.5.2 - Adjusting code and cleaning further, also removing unneeded code and cleaning up tests

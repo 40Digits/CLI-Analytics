@@ -1,11 +1,10 @@
 'use strict'
 
 const request = require('request');
-const aguid = require('aguid');
 const google = require('universal-analytics');
 
 class UA {
-  constructor(tid, cid = aguid(), options = {}) {
+  constructor(tid, options = {}) {
     if (!Boolean(tid)) {
       throw new Error('<cli-analytics> UA missing required uid parameter');
     }
@@ -15,7 +14,14 @@ class UA {
     };
 
     const settings = Object.assign({}, defaults, options);
-    this.track = new google(tid, cid, settings);
+
+    if (Boolean(settings.cid)) {
+      this.track = new google(tid, settings.cid, settings);
+    } else {
+      this.track = new google(tid, settings);
+    }
+
+    return this;
   }
 }
 

@@ -27,7 +27,7 @@ describe('class UA - Constructor', function() {
 
 describe('class UA - Constructor', function() {
   it('Should include userUUID if a valid userUUID parameter exists', function() {
-    const ua = new UA('00000000', '7aee0e05-24c7-4a1e-9d85-2c6581a70078');
+    const ua = new UA('00000000', {'cid': '7aee0e05-24c7-4a1e-9d85-2c6581a70078'});
     expect(ua.track.cid).to.equal('7aee0e05-24c7-4a1e-9d85-2c6581a70078');
   });
 });

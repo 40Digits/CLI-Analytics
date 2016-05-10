@@ -3,12 +3,10 @@
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 var request = require('request');
-var aguid = require('aguid');
 var google = require('universal-analytics');
 
 var UA = function UA(tid) {
-  var cid = arguments.length <= 1 || arguments[1] === undefined ? aguid() : arguments[1];
-  var options = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+  var options = arguments.length <= 1 || arguments[1] === undefined ? {} : arguments[1];
 
   _classCallCheck(this, UA);
 
@@ -21,7 +19,14 @@ var UA = function UA(tid) {
   };
 
   var settings = Object.assign({}, defaults, options);
-  this.track = new google(tid, cid, settings);
+
+  if (Boolean(settings.cid)) {
+    this.track = new google(tid, settings.cid, settings);
+  } else {
+    this.track = new google(tid, settings);
+  }
+
+  return this;
 };
 
 /*
