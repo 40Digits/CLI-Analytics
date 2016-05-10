@@ -1,3 +1,5 @@
+#0.3.0 - Moved request into dependencies
+
 #0.3.0 - Integrating babel so on systems not able to handle es2015 will be able to import without errors
 
 #0.2.0 - Adjusting implementation to remove universal-analytics requirement
