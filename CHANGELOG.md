@@ -1,3 +1,5 @@
+#0.3.3 - Minor adjustment to script styles
+
 #0.3.2 - Added in required hostname parameter
 
 #0.3.1 - Moved request into dependencies

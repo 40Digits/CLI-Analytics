@@ -1,7 +1,7 @@
 'use strict'
 
-const request = require('request')
-const aguid = require('aguid')
+const request = require('request');
+const aguid = require('aguid');
 
 function postRequestDataToGA(data, debug) {
   const url = Boolean(debug) ? 'https://www.google-analytics.com/debug/collect' : 'https://www.google-analytics.com/collect';
