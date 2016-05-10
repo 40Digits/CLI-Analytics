@@ -19,30 +19,15 @@ describe('class UA - Constructor', function() {
 });
 
 describe('class UA - Constructor', function() {
-  it('Should throw an error if no hostname parameter is added', function() {
-    let error = false;
-
-    try {
-      const ua = new UA('00000000');
-    } catch(err) {
-      error = err.message;
-    }
-
-    expect(error).to.equal('<cli-analytics> UA missing required hostname parameter');
-  });
-});
-
-
-describe('class UA - Constructor', function() {
-  it('Should return valid UA class if uid exists and hostname', function() {
-    const ua = new UA('00000000', 'test.test.test');
+  it('Should return valid UA class if uid exists ', function() {
+    const ua = new UA('00000000');
     expect(ua).to.be.an.instanceof(UA);
   });
 });
 
 describe('class UA - Constructor', function() {
   it('Should include userUUID if a valid userUUID parameter exists', function() {
-    const ua = new UA('00000000', 'test.test.test', '7aee0e05-24c7-4a1e-9d85-2c6581a70078');
+    const ua = new UA('00000000', '7aee0e05-24c7-4a1e-9d85-2c6581a70078');
     expect(ua.track.cid).to.equal('7aee0e05-24c7-4a1e-9d85-2c6581a70078');
   });
 });

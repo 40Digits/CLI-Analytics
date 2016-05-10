@@ -5,22 +5,17 @@ const aguid = require('aguid');
 const google = require('universal-analytics');
 
 class UA {
-  constructor(tid, hostname, cid = aguid()) {
-    this.debug = false;
-
-    if (tid === 'debug') {
-      this.debug = true;
-    }
-
+  constructor(tid, cid = aguid(), options = {}) {
     if (!Boolean(tid)) {
       throw new Error('<cli-analytics> UA missing required uid parameter');
     }
 
-    if (!Boolean(hostname)) {
-      throw new Error('<cli-analytics> UA missing required hostname parameter');
-    }
+    let defaults = {
+      https: true,
+    };
 
-    this.track = new google(tid, cid, {https: true});
+    const settings = Object.assign({}, defaults, options);
+    this.track = new google(tid, cid, settings);
   }
 }
 

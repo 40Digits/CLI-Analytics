@@ -6,26 +6,22 @@ var request = require('request');
 var aguid = require('aguid');
 var google = require('universal-analytics');
 
-var UA = function UA(tid, hostname) {
-  var cid = arguments.length <= 2 || arguments[2] === undefined ? aguid() : arguments[2];
+var UA = function UA(tid) {
+  var cid = arguments.length <= 1 || arguments[1] === undefined ? aguid() : arguments[1];
+  var options = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
 
   _classCallCheck(this, UA);
-
-  this.debug = false;
-
-  if (tid === 'debug') {
-    this.debug = true;
-  }
 
   if (!Boolean(tid)) {
     throw new Error('<cli-analytics> UA missing required uid parameter');
   }
 
-  if (!Boolean(hostname)) {
-    throw new Error('<cli-analytics> UA missing required hostname parameter');
-  }
+  var defaults = {
+    https: true
+  };
 
-  this.track = new google(tid, cid, { https: true });
+  var settings = Object.assign({}, defaults, options);
+  this.track = new google(tid, cid, settings);
 };
 
 /*

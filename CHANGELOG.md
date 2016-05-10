@@ -1,3 +1,5 @@
+#0.5.2 - Adjusting code and cleaning further, also removing unneeded code and cleaning up tests
+
 #0.5.1 - Setting universal-analytics to use https
 
 #0.5.0 - Adding back in universal-analytics requirement and simplifying code
