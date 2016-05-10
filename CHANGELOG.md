@@ -1,3 +1,5 @@
+#0.5.0 - Adding back in univeral-analytics requirement and simplifying code
+
 #0.4.0 - Adding sync functions for situations where the process is exited before async event is able to fire
 
 #0.3.4 - Fixing issue where promise implementation was incorrectly returned

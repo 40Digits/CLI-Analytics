@@ -2,32 +2,7 @@
 
 const request = require('request');
 const aguid = require('aguid');
-
-function postRequestDataToGA(data, debug) {
-  const url = Boolean(debug) ? 'https://www.google-analytics.com/debug/collect' : 'https://www.google-analytics.com/collect';
-  return new Promise((resolve, reject) => {
-    request.post({ url, form: data}, (err, res, body) => {
-      if (err) {
-        reject(err.message);
-        return false;
-      }
-
-      resolve(res);
-      return true;
-    });
-  });
-}
-
-function syncPostRequestDataToGA(data, debug) {
-  const url = Boolean(debug) ? 'https://www.google-analytics.com/debug/collect' : 'https://www.google-analytics.com/collect';
-  request.post({ url, form: data}, (err, res, body) => {
-    if (err) {
-      return false;
-    }
-
-    return res;
-  });
-}
+const google = require('universal-analytics');
 
 class UA {
   constructor(tid, hostname, cid = aguid()) {
@@ -45,84 +20,7 @@ class UA {
       throw new Error('<cli-analytics> UA missing required hostname parameter');
     }
 
-    this.settings = {
-      v: 1,
-      tid,
-      cid,
-      dh: hostname
-    };
-  }
-
-  pageview(path, title, meta = {}) {
-    return new Promise((resolve, reject) => {
-      const trackOptions = {
-        t: 'pageview',
-        dp: path,
-        dt: title,
-      };
-      const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-      postRequestDataToGA(trackRequest, this.debug).then((res)=> resolve(res)).catch(err => reject(err));
-    });
-  }
-
-  event(category, action, label, meta = {}) {
-    return new Promise((resolve, reject) => {
-      const trackOptions = {
-        t: 'event',
-        ec: category,
-        ea: action,
-        el: label,
-      };
-      const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-      postRequestDataToGA(trackRequest, this.debug).then((res) => resolve(res)).catch(err => reject(err));
-    });
-  }
-
-  timing(category, variable, time, label, meta = {}) {
-    return new Promise((resolve, reject) => {
-      const trackOptions = {
-        t: 'timing',
-        utc: category,
-        utv: variable,
-        utt: time,
-        utl: label,
-      };
-      const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-      postRequestDataToGA(trackRequest, this.debug).then((res)=> resolve(res)).catch(err => reject(err));
-    });
-  }
-
-  syncPageview(path, title, meta = {}) {
-    const trackOptions = {
-      t: 'pageview',
-      dp: path,
-      dt: title,
-    };
-    const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-    return syncPostRequestDataToGA(trackRequest, this.debug);
-  };
-
-  syncEvent(category, action, label, meta = {}) {
-    const trackOptions = {
-      t: 'event',
-      ec: category,
-      ea: action,
-      el: label,
-    };
-    const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-    return syncPostRequestDataToGA(trackRequest, this.debug);
-  }
-
-  syncTiming(category, variable, time, label, meta = {}) {
-    const trackOptions = {
-      t: 'timing',
-      utc: category,
-      utv: variable,
-      utt: time,
-      utl: label,
-    };
-    const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-    return syncPostRequestDataToGA(trackRequest, this.debug);
+    this.track = new google(tid, cid);
   }
 }
 
