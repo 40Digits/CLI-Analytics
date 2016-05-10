@@ -74,38 +74,46 @@ var UA = function () {
   }, {
     key: 'event',
     value: function event(category, action, label) {
+      var _this2 = this;
+
       var meta = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
 
-      var trackOptions = {
-        t: 'event',
-        ec: category,
-        ea: action,
-        el: label
-      };
-      var trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-      postRequestDataToGA(trackRequest, this.debug).then(function (res) {
-        return resolve(res);
-      }).catch(function (err) {
-        return reject(err);
+      return new Promise(function (resolve, reject) {
+        var trackOptions = {
+          t: 'event',
+          ec: category,
+          ea: action,
+          el: label
+        };
+        var trackRequest = Object.assign({}, _this2.settings, trackOptions, meta);
+        postRequestDataToGA(trackRequest, _this2.debug).then(function (res) {
+          return resolve(res);
+        }).catch(function (err) {
+          return reject(err);
+        });
       });
     }
   }, {
     key: 'timing',
     value: function timing(category, variable, time, label) {
+      var _this3 = this;
+
       var meta = arguments.length <= 4 || arguments[4] === undefined ? {} : arguments[4];
 
-      var trackOptions = {
-        t: 'timing',
-        utc: category,
-        utv: variable,
-        utt: time,
-        utl: label
-      };
-      var trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-      postRequestDataToGA(trackRequest, this.debug).then(function (res) {
-        return resolve(res);
-      }).catch(function (err) {
-        return reject(err);
+      return new Promise(function (resolve, reject) {
+        var trackOptions = {
+          t: 'timing',
+          utc: category,
+          utv: variable,
+          utt: time,
+          utl: label
+        };
+        var trackRequest = Object.assign({}, _this3.settings, trackOptions, meta);
+        postRequestDataToGA(trackRequest, _this3.debug).then(function (res) {
+          return resolve(res);
+        }).catch(function (err) {
+          return reject(err);
+        });
       });
     }
   }]);

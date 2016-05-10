@@ -1,3 +1,5 @@
+#0.3.4 - Fixing issue where promise implementation was incorrectly returned
+
 #0.3.3 - Minor adjustment to script styles
 
 #0.3.2 - Added in required hostname parameter

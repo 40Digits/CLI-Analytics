@@ -55,26 +55,30 @@ class UA {
   }
 
   event(category, action, label, meta = {}) {
-    const trackOptions = {
-      t: 'event',
-      ec: category,
-      ea: action,
-      el: label,
-    };
-    const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-    postRequestDataToGA(trackRequest, this.debug).then((res) => resolve(res)).catch(err => reject(err));
+    return new Promise((resolve, reject) => {
+      const trackOptions = {
+        t: 'event',
+        ec: category,
+        ea: action,
+        el: label,
+      };
+      const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
+      postRequestDataToGA(trackRequest, this.debug).then((res) => resolve(res)).catch(err => reject(err));
+    });
   }
 
   timing(category, variable, time, label, meta = {}) {
-    const trackOptions = {
-      t: 'timing',
-      utc: category,
-      utv: variable,
-      utt: time,
-      utl: label,
-    };
-    const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
-    postRequestDataToGA(trackRequest, this.debug).then((res)=> resolve(res)).catch(err => reject(err));
+    return new Promise((resolve, reject) => {
+      const trackOptions = {
+        t: 'timing',
+        utc: category,
+        utv: variable,
+        utt: time,
+        utl: label,
+      };
+      const trackRequest = Object.assign({}, this.settings, trackOptions, meta);
+      postRequestDataToGA(trackRequest, this.debug).then((res)=> resolve(res)).catch(err => reject(err));
+    });
   }
 }
 
