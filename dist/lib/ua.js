@@ -22,6 +22,17 @@ function postRequestDataToGA(data, debug) {
   });
 }
 
+function syncPostRequestDataToGA(data, debug) {
+  var url = Boolean(debug) ? 'https://www.google-analytics.com/debug/collect' : 'https://www.google-analytics.com/collect';
+  request.post({ url: url, form: data }, function (err, res, body) {
+    if (err) {
+      return false;
+    }
+
+    return res;
+  });
+}
+
 var UA = function () {
   function UA(tid, hostname) {
     var cid = arguments.length <= 2 || arguments[2] === undefined ? aguid() : arguments[2];
@@ -115,6 +126,48 @@ var UA = function () {
           return reject(err);
         });
       });
+    }
+  }, {
+    key: 'syncPageview',
+    value: function syncPageview(path, title) {
+      var meta = arguments.length <= 2 || arguments[2] === undefined ? {} : arguments[2];
+
+      var trackOptions = {
+        t: 'pageview',
+        dp: path,
+        dt: title
+      };
+      var trackRequest = Object.assign({}, this.settings, trackOptions, meta);
+      return syncPostRequestDataToGA(trackRequest, this.debug);
+    }
+  }, {
+    key: 'syncEvent',
+    value: function syncEvent(category, action, label) {
+      var meta = arguments.length <= 3 || arguments[3] === undefined ? {} : arguments[3];
+
+      var trackOptions = {
+        t: 'event',
+        ec: category,
+        ea: action,
+        el: label
+      };
+      var trackRequest = Object.assign({}, this.settings, trackOptions, meta);
+      return syncPostRequestDataToGA(trackRequest, this.debug);
+    }
+  }, {
+    key: 'syncTiming',
+    value: function syncTiming(category, variable, time, label) {
+      var meta = arguments.length <= 4 || arguments[4] === undefined ? {} : arguments[4];
+
+      var trackOptions = {
+        t: 'timing',
+        utc: category,
+        utv: variable,
+        utt: time,
+        utl: label
+      };
+      var trackRequest = Object.assign({}, this.settings, trackOptions, meta);
+      return syncPostRequestDataToGA(trackRequest, this.debug);
     }
   }]);
 
