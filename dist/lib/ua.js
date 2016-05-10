@@ -25,7 +25,7 @@ var UA = function UA(tid, hostname) {
     throw new Error('<cli-analytics> UA missing required hostname parameter');
   }
 
-  this.track = new google(tid, cid);
+  this.track = new google(tid, cid, { https: true });
 };
 
 /*
