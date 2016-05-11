@@ -13,7 +13,7 @@ class UA {
       https: true,
     };
 
-    let lastaction = new Date().getTime();
+    let timings = {};
 
     const settings = Object.assign({}, defaults, options);
 
@@ -26,12 +26,12 @@ class UA {
     return this;
   }
 
-  getTimeDiff() {
-    return new Date().getTime() - this.lastaction;
+  getTimeDiff(variable) {
+    return new Date().getTime() - this.timings[variable];
   }
 
-  updateLastActionTime() {
-    this.lastaction = new Date().getTime();
+  startTimer(variable, time = new Date().getTime()) {
+    this.timings[variable] = time;
   }
 }
 

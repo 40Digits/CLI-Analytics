@@ -1,3 +1,5 @@
+#0.5.6 - Updating Timer functions to handle multiple timings (for promises)
+
 #0.5.5 - Adding in timer functions and variables
 
 #0.5.4 - Adjusting how cid works and pulls in

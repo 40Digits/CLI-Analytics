@@ -21,7 +21,7 @@ var UA = function () {
       https: true
     };
 
-    var lastaction = new Date().getTime();
+    var timings = {};
 
     var settings = Object.assign({}, defaults, options);
 
@@ -36,13 +36,15 @@ var UA = function () {
 
   _createClass(UA, [{
     key: 'getTimeDiff',
-    value: function getTimeDiff() {
-      return new Date().getTime() - this.lastaction;
+    value: function getTimeDiff(variable) {
+      return new Date().getTime() - this.timings[variable];
     }
   }, {
-    key: 'updateLastActionTime',
-    value: function updateLastActionTime() {
-      this.lastaction = new Date().getTime();
+    key: 'startTimer',
+    value: function startTimer(variable) {
+      var time = arguments.length <= 1 || arguments[1] === undefined ? new Date().getTime() : arguments[1];
+
+      this.timings[variable] = time;
     }
   }]);
 
