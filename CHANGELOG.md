@@ -1,3 +1,5 @@
+#0.5.7 - Fixing issue on timing where timings variable was set incorrectly
+
 #0.5.6 - Updating Timer functions to handle multiple timings (for promises)
 
 #0.5.5 - Adding in timer functions and variables

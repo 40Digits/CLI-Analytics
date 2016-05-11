@@ -21,7 +21,7 @@ var UA = function () {
       https: true
     };
 
-    var timings = {};
+    this.timings = {};
 
     var settings = Object.assign({}, defaults, options);
 

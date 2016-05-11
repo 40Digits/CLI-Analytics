@@ -13,7 +13,7 @@ class UA {
       https: true,
     };
 
-    let timings = {};
+    this.timings = {};
 
     const settings = Object.assign({}, defaults, options);
 
