@@ -13,6 +13,8 @@ class UA {
       https: true,
     };
 
+    let lastaction = new Date().getTime();
+
     const settings = Object.assign({}, defaults, options);
 
     if (Boolean(settings.cid)) {
@@ -22,6 +24,14 @@ class UA {
     }
 
     return this;
+  }
+
+  getTimeDiff() {
+    return new Date().getTime() - this.lastaction;
+  }
+
+  updateLastActionTime() {
+    this.lastaction = new Date().getTime();
   }
 }
 
