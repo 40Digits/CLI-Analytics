@@ -1,3 +1,5 @@
+#1.0.1 - Adjusting repo in package.json to be tied to github
+
 #1.0.0 - Initial Transition to Open Source
 
 #0.5.10 - Adjusting readme to make it easier to parse and work through

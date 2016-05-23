@@ -34,11 +34,29 @@ var UA = function () {
     return this;
   }
 
+  /**
+   * getTimeDiff() returns the time difference in milliseconds between
+   * the current time against the specific timing variable.
+   *
+   * @param {String} name
+   * @return {Number} difference
+   */
+
+
   _createClass(UA, [{
     key: 'getTimeDiff',
     value: function getTimeDiff(variable) {
       return new Date().getTime() - this.timings[variable];
     }
+
+    /**
+     * startTimer() creates a timer variable with a created date that
+     * can be used as a base for comparing timings.
+     *
+     * @param {String} name
+     * @return {Number} difference
+     */
+
   }, {
     key: 'startTimer',
     value: function startTimer(variable) {
@@ -50,11 +68,5 @@ var UA = function () {
 
   return UA;
 }();
-
-/*
-  NOTES:
-    Parameter definitions to the Measurement Protocol:
-    https://developers.google.com/analytics/devguides/collection/protocol/v1/parameters
- */
 
 module.exports = UA;

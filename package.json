@@ -1,11 +1,11 @@
 {
   "name": "cli-analytics",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CLI Analytics is intended to allow quick integration from the cli into analytic interfaces.",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:40digits/cli-analytics.git"
+    "url": "git@github.com:40Digits/CLI-Analytics.git"
   },
   "scripts": {
     "test": "mocha ./src/tests --recursive --require babel-core/register",
