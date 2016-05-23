@@ -1,3 +1,5 @@
+#0.5.9 - Further Adjustments to documentation to get it closer to be ready for open sourcing
+
 #0.5.8 - Prepping repository for becoming public
 
 #0.5.7 - Fixing issue on timing where timings variable was set incorrectly
