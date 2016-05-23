@@ -34,7 +34,7 @@ analytics.track.event('Category', 'Action', 'Label', 'Value').send();
 
 #### Examples
 
-###### Timeout Example, Display elapsed time after waiting ~1 second
+###### Timeout Example, Display elapsed time after waiting 1 second
 ```js
 analytics.startTimer('timeout');
 setTimeout(() => {

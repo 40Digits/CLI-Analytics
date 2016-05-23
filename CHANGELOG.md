@@ -1,3 +1,5 @@
+#1.0.0 - Initial Transition to Open Source
+
 #0.5.10 - Adjusting readme to make it easier to parse and work through
 
 #0.5.9 - Further Adjustments to documentation to get it closer to be ready for open sourcing

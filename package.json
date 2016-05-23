@@ -1,7 +1,7 @@
 {
   "name": "cli-analytics",
-  "version": "0.5.10",
-  "description": "",
+  "version": "1.0.0",
+  "description": "CLI Analytics is intended to allow quick integration from the cli into analytic interfaces.",
   "main": "index.js",
   "repository": {
     "type": "git",
